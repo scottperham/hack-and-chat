@@ -220,7 +220,7 @@ var members = await connectorClient.Conversations.GetConversationMembersAsync(ch
 var internalUserObject = members[0];
 ```
 
-In the case of TypeScript / Javascript, there isn't a built-in ConnectorClient class, but we can create our own! Here is one I created that exposes the [v3/conversation/members](https://github.com/scottperham/hr-talent-node/blob/master/src/services/data/botService.ts) endpoint.
+In the case of TypeScript / Javascript, there isn't a built-in ConnectorClient class in the framework, but we can create our own! [Here is one I created](https://github.com/scottperham/hr-talent-node/blob/master/src/services/data/botService.ts) that exposes the [v3/conversation/members bot framework api endpoint](https://docs.microsoft.com/en-us/azure/bot-service/rest-api/bot-framework-rest-connector-api-reference?view=azure-bot-service-4.0#get-conversation-members).
 
 _TypeScript_
 ```TypeScript
