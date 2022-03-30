@@ -1,8 +1,9 @@
 ---
-title:  "Proactive messaging in Teams"
+layout: post
+title:  Proactive messaging in Teams
 ---
 
-## Proactive messaging in Teams
+Sending a proactive notifiction seems more complicated than it really is.
 
 More and more of us are spending our days working in Microsoft Teams and with the [announcement that it's now reached a whopping 270 million monthly active users](https://twitter.com/fxshaw/status/1486107743320612867), we're seeing loads more high quality apps being published to the store... the most common feature we see of these apps is the ability to send a notification to a user.
 
@@ -26,7 +27,7 @@ This really only leaves us with 2 options...
 
 Yes... yes it would, and that brings me onto option 2.
 
-### **Option 2**: Programmatically get this conversation reference on demand
+### **Option 2**: Programmatically get this conversation reference on demand!
 
 The first thing to note is that this requires application scopes, yep, the dreaded ADMIN CONSENT... the upside though is that these are probably the least-scary admin scopes you'll come across!
 
@@ -49,7 +50,7 @@ In this example, `_appSettings.MicrosoftAppId` (C#) and `process.env.MicrosoftAp
 Likewise , `_appSettings.MicrosoftAppPassword` (C#) and `process.env.MicrosoftAppPassword` (TypeScript) refer to a secret that has been created against your app registration.
 
 _C#_
-```C#
+```cs
 using Microsoft.Identity.Client;
 
 private async Task<string> GetTokenForApp(string tenantId)
@@ -70,7 +71,7 @@ private async Task<string> GetTokenForApp(string tenantId)
 ```
 
 _TypeScript_
-```TypeScript
+```ts
 import { ConfidentialClientApplication } from '@azure/msal-node';
 
 public async getAppToken(tenantId: string) : Promise<string | undefined> {
@@ -102,7 +103,7 @@ If the app cannot be found, this is most likely because the user doesn't have it
 In this example, `_appSettings.TeamsAppId` (C#) and `process.env.TeamsAppId` (TypeScript) refer to the ID (GUID) inside the Teams app manifest.
 
 _C#_
-```C#
+```cs
 var installedApps = await graphClient.Users[upn].Teamwork.InstalledApps
     .Request()
     .Filter($"teamsApp/externalId eq '{_appSettings.TeamsAppId}'")
@@ -122,7 +123,7 @@ else {
 ```
 
 _TypeScript_
-```TypeScript
+```ts
 const installedApps = await graphClient.api(`/users/${upnOrOid}/teamwork/installedapps`)
     .filter(`teamsApp/externalId eq '${process.env.TeamsAppId}'`)
     .expand("teamsApp")
@@ -143,7 +144,7 @@ else {
 Find our application in the app store or organisation store using [appCatalogs/teamsApps](https://docs.microsoft.com/en-us/graph/api/appcatalogs-list-teamsapps?view=graph-rest-1.0&tabs=http) and then install it with [users/{upn}/teamwork/installedApps](https://docs.microsoft.com/en-us/graph/api/userteamwork-post-installedapps?view=graph-rest-1.0&tabs=http)
 
 _C#_
-```C#
+```cs
 var teamsApps = await graphClient.AppCatalogs.TeamsApps
     .Request()
     .Filter($"distributionMethod eq 'organization' and externalId eq '{_appSettings.TeamsAppId}'")
@@ -178,7 +179,7 @@ if (teamApp != null)
 ```
 
 _TypeScript_
-```TypeScript
+```ts
 const teamsApps = await graphClient.api("/appCatalogs/teamsApps")
     .filter(`externalId eq '${process.env.TeamsAppId}'`)
     .get() as ODataCollection<any>;
@@ -206,7 +207,7 @@ if (teamsApps.value.length > 0 && teamsApps.value[0].id) {
 To get the internal user reference (also known as a ChannelAccount) we call the [chat graph endpoint for the installed app](https://docs.microsoft.com/en-us/graph/api/userscopeteamsappinstallation-get-chat?view=graph-rest-1.0&tabs=http)
 
 _C#_
-```C#
+```cs
 var chat = await graphClient.Users[upn].Teamwork.InstalledApps[installationId].Chat
     .Request()
     .GetAsync(cancellationToken);
@@ -223,7 +224,7 @@ var internalUserObject = members[0];
 In the case of TypeScript / Javascript, there isn't a built-in ConnectorClient class in the framework, but we can create our own! [Here is one I created](https://github.com/scottperham/hr-talent-node/blob/master/src/services/data/botService.ts) that exposes the [v3/conversation/members bot framework api endpoint](https://docs.microsoft.com/en-us/azure/bot-service/rest-api/bot-framework-rest-connector-api-reference?view=azure-bot-service-4.0#get-conversation-members).
 
 _TypeScript_
-```TypeScript
+```ts
 const chat = await graphClient
     .api(`/users/${upnOrOid}/teamwork/installedApps/${installationId}/chat`)
     .get() as Chat;
@@ -242,7 +243,7 @@ var internalUserObject = members[0];
 Although we weren't able to craft or request the internal user id, we can programmatically create the bot id! This is in the following format "28:{_Your AAD client ID_}"
 
 _C#_
-```C#
+```cs
 var conversationParameters = new ConversationParameters
 {
     IsGroup = false,
@@ -256,7 +257,7 @@ var conversationParameters = new ConversationParameters
 ```
 
 _TypeScript_
-```TypeScript
+```ts
 const conversationParameters: Partial<ConversationParameters> = {
     isGroup: false,
     bot: {
@@ -275,7 +276,7 @@ Finally, we can weave our way around the confusing set of nested callbacks to cr
 We have a new configuration value here, `_appSettings.ServiceUrl` (C#) and `process.env.ServiceUrl` (TypeScript). This is basically the base url for bot service and will be https://smba.trafficmanager.net/{your region} - now, {your region} can be a few possible values... I typically fallback to "uk" but you might want to consider overriding this with the service url that appears in any activity that is sent to your bot as this will ensure that you have the correct region. (Having said that, my tests seem to confirm that as long as it's a valid region value, the messages will still be routed!)
 
 _C#_
-```C#
+```cs
 await ((CloudAdapter)_adapter).CreateConversationAsync(credentials.MicrosoftAppId, null, _appSettings.ServiceUrl, credentials.OAuthScope, conversationParameters, async (t1, c1) =>
 {
     var conversationReference = t1.Activity.GetConversationReference();
@@ -287,7 +288,7 @@ await ((CloudAdapter)_adapter).CreateConversationAsync(credentials.MicrosoftAppI
 ```
 
 _TypeScript_
-```TypeScript
+```ts
 await this.adapter.createConversationAsync(process.env.MicrosoftAppId!, "", process.env.ServiceUrl!, "https://api.botframework.com", <ConversationParameters>conversationParameters, async (t1) => {
     const conversationReference: ConversationReference = {
         activityId: t1.activity.id,
@@ -304,7 +305,7 @@ await this.adapter.createConversationAsync(process.env.MicrosoftAppId!, "", proc
 });
 ```
 
-Phew! That most definitely feels more complex than it needs to be, but until the bot service supports and endpoint to retrieve those internal user Ids, this is, unfortunately the way it has to work!
+Phew! That most definitely feels more complex than it needs to be, but until the bot framework api supports and endpoint to retrieve those internal user IDs, this is, unfortunately the way it has to work!
 
 A fully functional sample that uses this approach can be found [here for C#](https://github.com/OfficeDev/msteams-sample-contoso-hr-talent-app) and here for [Node/TypeScript](https://github.com/scottperham/hr-talent-node)
 
