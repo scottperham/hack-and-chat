@@ -1,6 +1,5 @@
 ---
-layout: post
-title:  "Welcome to Jekyll!"
+title:  "Proactive messaging in Teams"
 ---
 
 # Proactive messaging in Teams
