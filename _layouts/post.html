@@ -27,7 +27,11 @@ layout: default
   <div class="date">
     Written on {{ page.date | date: "%B %e, %Y" }}
   </div>
-  
+  <div style="margin: 10px 0;">
+    {% for tag in page.tags %}
+      <span class="tag">{{tag}}</span>
+    {% endfor %}
+  </div>
   {% include post-about.html %}
 
   {% include disqus.html %}
