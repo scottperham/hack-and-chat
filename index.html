@@ -13,6 +13,11 @@ layout: default
           <span style="margin: 0 10px;">{{site.authors[post.author].name}}</span>
           &middot;
           <span style="margin: 0 10px;">{{ post.date | date: "%B %e, %Y" }}</span>
+          {% capture read_time %}
+            {{ post.content | number_of_words | divided_by: 180 }}
+          {% endcapture %}
+          &middot;
+          <span style="margin: 0 10px;">{{ read_time }} min read</span>
       </div>
 
       <div class="entry" style="margin-top: 20px;">
