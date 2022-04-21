@@ -1,6 +1,8 @@
 ---
 layout: post
 title:  Proactive messaging in Teams
+excerpt: With more and more of us are spending our days working in Microsoft Teams, we're seeing loads more high quality apps being published to the store... the most common feature we see of these apps is the ability to send a notification to a user.
+author: scott
 ---
 
 Sending a proactive notifiction seems more complicated than it really is.
@@ -307,6 +309,6 @@ await this.adapter.createConversationAsync(process.env.MicrosoftAppId!, "", proc
 
 Phew! That most definitely feels more complex than it needs to be, but until the bot framework api supports and endpoint to retrieve those internal user IDs, this is, unfortunately the way it has to work!
 
-A fully functional sample that uses this approach can be found [here for C#](https://github.com/OfficeDev/msteams-sample-contoso-hr-talent-app) and here for [Node/TypeScript](https://github.com/scottperham/hr-talent-node)
+A fully functional sample that uses this approach can be found [here for C#](https://github.com/OfficeDev/msteams-sample-contoso-hr-talent-app) and here for [Node/TypeScript](https://github.com/OfficeDev/msteams-sample-contoso-hr-talent-app-node)
 
 Happy coding!

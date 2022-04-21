@@ -1,0 +1,19 @@
+<div>
+    <hr style="margin: 50px 0;" />
+    <div style="display: flex; flex-direction: row;">
+        <div style="flex: 1 1 100px;">
+            <img style="width: 100px; height: 100px; border-radius: 50%;" src="{{site.authors[page.author].avatar}}" />
+        </div>
+        <div style="flex: 1 1 620px;">
+            <div style="margin-left: 20px;">
+                <div style="font-weight: bold;">{{site.authors[page.author].name}}</div>
+                <div>
+                    {{site.authors[page.author].short_profile}}
+                </div>
+                <div style="text-align: right;">
+                    {% if site.authors[page.author].github %}<a href="https://github.com/{{ site.authors[page.author].github }}"><i class="svg-icon github"></i></a>{% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

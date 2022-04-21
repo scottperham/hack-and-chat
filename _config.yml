@@ -15,6 +15,18 @@ avatar: https://raw.githubusercontent.com/barryclark/jekyll-now/master/images/je
 # Flags below are optional
 #
 
+authors:
+  scott:
+    name: Scott Perham
+    short_profile: Scott works at Microsoft as a Cloud Solution Architect specialising in application development
+    avatar: https://avatars.githubusercontent.com/u/127280?v=4
+    github: scottperham
+  jack:
+    name: Jack Lewis
+    short_profile: Jack works at Microsoft as a Cloud Solution Architect specialising in application development
+    avatar: https://avatars.githubusercontent.com/u/54140421?v=4
+    github: jalew123
+
 # Includes an icon in the footer for each username you enter
 footer-links:
   dribbble:
