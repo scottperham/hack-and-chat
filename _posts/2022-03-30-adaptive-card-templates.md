@@ -12,7 +12,9 @@ How about making them even cooler with some fancy runtime data binding?
 
 <!--more-->
 
-When you need to build data-driven cards there are a couple of options open to you, the first is to simply define the JSON for the final card dynamically. This approach is made slightly easier with the Adaptive Card SDKs that are available for [.NET](https://docs.microsoft.com/en-us/adaptive-cards/sdk/authoring-cards/net) and [JavaScript](https://docs.microsoft.com/en-us/adaptive-cards/sdk/authoring-cards/javascript). The only downside to this approach is that it tends to require a lot of declaritive code and it's not that easy to take a beautifully designed card from the [Adaptive Card designer](https://adaptivecards.io/designer/) and re-create that with the available object models.
+When you need to build data-driven cards there are a couple of options open to you. The first is to simply define the JSON for the final card dynamically. 
+
+Although this is made slightly easier with the Adaptive Card SDKs that are available for [.NET](https://docs.microsoft.com/en-us/adaptive-cards/sdk/authoring-cards/net) and [JavaScript](https://docs.microsoft.com/en-us/adaptive-cards/sdk/authoring-cards/javascript), the downside to this approach is that it tends to require a lot of declaritive code and it's not that easy to take a beautifully designed card from the [Adaptive Card designer](https://adaptivecards.io/designer/) and re-create that with the available object models.
 
 The second way of handling this (and in my opinion, the better way!) is to use **_templating_**.
 
