@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Proactive messaging in Teams
-tags: microsoft-teams C# TypeScript
+tags: [Microsoft Teams, C#, TypeScript]
 excerpt_separator: <!--more-->
 author: scott
 ---
@@ -241,7 +241,9 @@ const members = await connectorClient
 var internalUserObject = members[0];
 ```
 
->**Note:** This has a side effect of calling your bot with a ConversationUpdate activity as if new members have been added to the chat.
+:WARNINGSTART:
+This has a side effect of calling your bot with a ConversationUpdate activity as if new members have been added to the chat. Bear this in mind if you have logic for when a new member is added!
+:WARNINGEND:
 
 ### 5. Create the conversation parameters
 

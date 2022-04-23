@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Adaptive card templates
-tags: adaptive-cards templating C# JavaScript
+tags: [Adaptive Cards, Templating, C#, JavaScript]
 excerpt_separator: <!--more-->
 author: scott
 ---
