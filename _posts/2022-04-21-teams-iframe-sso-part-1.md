@@ -130,4 +130,6 @@ Most partners use the 'fallback' authentication approach to do the initial ident
 
 Anyway, that's enough for this post. Next time, we'll explore how you can do the identity matching, and issue an access token (or SessionId) that your APIs will accept, based on the user having their Azure AD Access Token available through the getAuthToken() function. This will be more theoretical, as it's different for each app, depending on what they use to manage identities and access in their app.
 
-Happy coding!
+Cheers!
+
+Jack
