@@ -213,7 +213,7 @@ Cool, we have a dynamic badge image.
 
 Now let's create an adaptive card that uses it. Head over to the [Adaptive Card designer](https://adaptivecards.io/designer/) and try it out.
 
-Here is the JSON representation of the blog post card, obviously, you'll need to change the image urls to your own server rather than my ngrok tunnel!
+Here is the JSON representation of the blog post card that uses this url to display tags.
 
 :WARNINGSTART:
 Remember to replace &lt;BASE URI&gt; with your own URI
