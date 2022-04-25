@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  Using Azure AD for SSO in your Teams App (Part 1 - iFrames)
-excerpt: Teams SSO!
 tags: [Azure AD, JavaScript, Microsoft Teams]
 excerpt_separator: <!--more-->
 author: jack
