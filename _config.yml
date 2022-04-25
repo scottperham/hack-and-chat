@@ -18,13 +18,13 @@ avatar: https://raw.githubusercontent.com/barryclark/jekyll-now/master/images/je
 authors:
   scott:
     name: Scott Perham
-    short_profile: Scott works at Microsoft as a Cloud Solution Architect specialising in application development
+    short_profile: Scott is a Cloud Solution Architect at Microsoft specialising in application development
     avatar: https://avatars.githubusercontent.com/u/127280?v=4
     github: scottperham
     linkedin: scottperham
   jack:
     name: Jack Lewis
-    short_profile: Jack works at Microsoft as a Cloud Solution Architect specialising in application development
+    short_profile: Jack works is a Cloud Solution Architect at Microsoft specialising in application development
     avatar: https://avatars.githubusercontent.com/u/54140421?v=4
     github: jalew123
 
