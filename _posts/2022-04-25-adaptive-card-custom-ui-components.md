@@ -206,7 +206,7 @@ Finally, let's see this in action!
 Build up a URI that represents the badge you'd like to create and navigate to this is a browser of your choice:
 
 ```
-"<BASE URI>/images/badge?text=Microsoft+Teams&textheight=10&paddingy=5&cornerradius=8&backgroundcolor=%23fc0&textcolor=%23333"
+"<BASE URI>/images/badge?text=Microsoft+Teams&textheight=10&paddingy=5&cornerradius=8&backgroundcolor=%23ffcc00&textcolor=%23333333"
 ```
 
 :WARNINGSTART:
@@ -293,7 +293,7 @@ Remember to replace &lt;BASE URI&gt; with your own URI
                     "items": [
                         {
                             "type": "Image",
-                            "url": "<BASE URI>/images/badge?text=Microsoft+Teams&textheight=10&paddingy=5&cornerradius=8&backgroundcolor=%23fc0&textcolor=%23333"
+                            "url": "<BASE URI>/images/badge?text=Microsoft+Teams&textheight=10&paddingy=5&cornerradius=8&backgroundcolor=%23ffcc00&textcolor=%23333333"
                         }
                     ]
                 },
@@ -303,7 +303,7 @@ Remember to replace &lt;BASE URI&gt; with your own URI
                     "items": [
                         {
                             "type": "Image",
-                            "url": "<BASE URI>/images/badge?text=C%23&textheight=10&paddingy=5&cornerradius=8&backgroundcolor=%23fc0&textcolor=%23333"
+                            "url": "<BASE URI>/images/badge?text=C%23&textheight=10&paddingy=5&cornerradius=8&backgroundcolor=%23ffcc00&textcolor=%23333333"
                         }
                     ]
                 },
@@ -313,7 +313,7 @@ Remember to replace &lt;BASE URI&gt; with your own URI
                     "items": [
                         {
                             "type": "Image",
-                            "url": "<BASE URI>/images/badge?text=Adaptive+Cards&textheight=10&paddingy=5&cornerradius=8&backgroundcolor=%23fc0&textcolor=%23333"
+                            "url": "<BASE URI>/images/badge?text=Adaptive+Cards&textheight=10&paddingy=5&cornerradius=8&backgroundcolor=%23ffcc00&textcolor=%23333333"
                         }
                     ]
                 }
