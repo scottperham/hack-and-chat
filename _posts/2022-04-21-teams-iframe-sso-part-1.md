@@ -96,9 +96,9 @@ This will then enable you to use the Teams JavaScript client SDK, to perform SSO
 
 Now, you need to setup your Azure AD App Registration, add the WebApplicationInfo properties to your Teams App Manifest and call the getAuthToken() function, that the Teams SDK provides, which if all is well will return an Azure AD Access Token. Details on how to do this can be found [here](https://docs.microsoft.com/en-us/microsoftteams/platform/tabs/how-to/authentication/auth-aad-sso?tabs=dotnet)
 
-:WARNINGSTART:
+:WARNING:
 Please follow the steps in the Microsoft Docs Teams SSO article carefully. From experience, we tend to see that most issues with the getAuthToken() function not returning an access token are related to some configuration issue that is present in the Azure AD App Registration. Typically because the API URI is malformed and doesn't match the standard detailed in the document, or the access_as_user scope is not setup correctly to allow the Teams to get an access token, for your app, with that scope included
-:WARNINGEND:
+:END:
 
 Okay! So all being well, you should now have an access token that is returned when you call getAuthToken(). If you take this access token, and head over to https://jwt.ms/ you can decode the access token and take a look at the claims inside. These claims should include UPN/email (which is typically used to identity a user and match them to an existing user in the system), tenantId (TID), givenName and surname. You can also add additional optional claims into the token, by adjusting some of the settings in your Azure AD App Registration.
 

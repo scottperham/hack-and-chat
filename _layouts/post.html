@@ -14,17 +14,19 @@ layout: default
   </symbol>
 </svg>
 
-{% capture warning-icon %}
-  <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
-{% endcapture %}
-
-{% capture warning-start %}
-  <div class="note" style="display: flex; align-content: center;">
+{% capture warning %}
+  <div class="note warning" style="display: flex; align-content: center;">
     <svg style="flex: 0 0 24px;" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
     <div style="margin-left: 10px;">
 {% endcapture %}
 
-{% capture warning-end %}
+{% capture info %}
+  <div class="note info" style="display: flex; align-content: center;">
+    <svg style="flex: 0 0 24px;" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#info-fill"/></svg>
+    <div style="margin-left: 10px;">
+{% endcapture %}
+
+{% capture end-section %}
     </div></div>
 {% endcapture %}
 
@@ -39,7 +41,7 @@ layout: default
   {% include post-info.html post=page %}
 
   <div class="entry">
-    {{ content | replace: ":WARNINGSTART:",warning-start | replace: ":WARNINGEND:",warning-end }}
+    {{ content | replace: ":WARNING:",warning | replace: ":INFO:",info | replace: ":END:",end-section }}
   </div>
 
   <div class="date">

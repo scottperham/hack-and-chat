@@ -241,9 +241,9 @@ const members = await connectorClient
 var internalUserObject = members[0];
 ```
 
-:WARNINGSTART:
+:WARNING:
 This has a side effect of calling your bot with a ConversationUpdate activity as if new members have been added to the chat. Bear this in mind if you have logic for when a new member is added!
-:WARNINGEND:
+:END:
 
 ### 5. Create the conversation parameters
 

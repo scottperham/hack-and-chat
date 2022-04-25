@@ -12,9 +12,9 @@ Additionally, developers like to use Postman, or something similar, to craft the
 
 To help with this, I've created a Postman collection that provides you with 2 requests, in a collection. These requests allow you to either get an Azure AD Access Token, using either the [Client Credentials Grant Flow](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow) (which provides a token under the context of an app) or the [Resource Owner Password Credentials Grant Flow](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth-ropc?msclkid=ce405a14c49f11ec8be142180afd07df) (which allows you to send a username and password via the APIs to Azure AD and it returns a token under the context of a user (delegated)).
 
-:WARNINGSTART:
+:WARNING:
 ROPC Grant Flow will not work for MFA enabled users and should not be used in production. It is designed to be used in test/dev scenarios, where an interactive user login, to obtain a delegated access token is not possible. For obtaining delegated access token in production scenarios, I'd recommend using the [Auth Code Grant Flow](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-auth-code-flow) instead.
-:WARNINGEND:
+:END:
 
 [To get the Postman collection for Azure AD Auth, click here](https://github.com/OfficeDev/msteams-sample-contoso-hr-talent-app/blob/master/postman/Azure%20AD%20(Get%20Access%20Tokens).postman_collection.json) - you'll need to replace some of the variables, such as **tenantId** with the tenantId you are targetting.
 Additionally, as this is all non-interactive, you will need to make sure that the scopes you need/request access to have been granted. This can be done via the Azure AD App Registration, or you can craft your own Azure AD Admin Consent URL, more details [here](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent#using-the-admin-consent-endpoint).

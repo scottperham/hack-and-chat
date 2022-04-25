@@ -58,9 +58,9 @@ First, let's install the nuget package:
 Install-Package SixLabors.ImageSharp.Drawing -PreRelease
 ```
 
-:WARNINGSTART:
+:WARNING:
 -PreRelease is required here because currently the Drawing package is in beta!
-:WARNINGEND:
+:END:
 
 Then, write some code:
 
@@ -209,9 +209,9 @@ Build up a URI that represents the badge you'd like to create and navigate to th
 "<BASE URI>/images/badge?text=Microsoft+Teams&textheight=10&paddingy=5&cornerradius=8&backgroundcolor=%23ffcc00&textcolor=%23333333"
 ```
 
-:WARNINGSTART:
+:INFO:
 All the values need to be "uri encoded" so for a css-style colour value #ffcc00 for example you'll need to encode the "#", this would become %23ffcc00 - this is also true for spaces, but you can just use "+" for that.
-:WARNINGEND:
+:END:
 
 
 ![Badge Image](/assets/adaptive-card-custom-ui/browser.png)
@@ -222,9 +222,9 @@ Now let's create an adaptive card that uses it. Head over to the [Adaptive Card 
 
 Here is the JSON representation of the blog post card that uses this url to display tags.
 
-:WARNINGSTART:
+:WARNING:
 Remember to replace &lt;BASE URI&gt; with your own URI
-:WARNINGEND:
+:END:
 
 ```json
 {
