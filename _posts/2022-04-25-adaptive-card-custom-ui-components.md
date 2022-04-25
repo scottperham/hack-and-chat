@@ -30,10 +30,6 @@ Ok, I know this is a pretty trivial example, but it demonstrates the ability to 
 
 And here's how it's done...
 
-The first thing to mention here is that in recent years dotnet has become much more Linux friendly which is a good thing! But something it still lacks to this day is a really good support for cross-platform graphics.
-
-To keep things simple, and keep things working on non-Windows hosts, I've decided to use a cross-platform graphics library called ImageSharp.
-
 The process is really quite simple, you host an endpoint that essentially pretends to support a GET request for a static image but actually dynamically generates the image on each request - this bit is the easist part, we just change the `Content-Type` response header to some image mime type, in this case `image/png`:
 
 ```cs
@@ -51,6 +47,8 @@ public async Task<IActionResult> GetBadge()
 Now for the more complex part... drawing the image!
 
 How you do this will very much depend on which graphics library you go with... in the not-so-olden days we'd use GDI+ and a combination of `Image`, `Pen`, `Brush` and `Path` types to draw the content to a `Graphics` context.
+
+Something to mention here is that in recent years dotnet has become much more Linux friendly which is a good thing! But something it still lacks to this day is a really good support for cross-platform graphics.
 
 I tend to host services on a combination of Linux and Windows so I've gone for a cross-platform library called [ImageSharp](https://sixlabors.com/products/imagesharp/). (All managed code, very cool library!)
 
