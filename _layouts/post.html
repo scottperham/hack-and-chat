@@ -2,6 +2,58 @@
 layout: default
 ---
 
+<script type="text/javascript">
+  $(() => {
+    const toolbar = $("#codeToolbar");
+    $("div.highlight").each((i, e) => {
+      const $this = $(e);
+      const clone = toolbar.clone().css("display", "flex").insertBefore($this);
+
+      const expandLink = clone.find(".expand");
+      const collapseLink = clone.find(".collapse");
+      const copyLink = clone.find(".copy");
+      const lang = clone.find(".lang");
+
+      const pre = $this.find("pre");
+
+      if (pre[0].offsetHeight < 350) {
+        expandLink.hide();
+      }
+
+      expandLink.click(() => {
+        $this.css("max-height","none");
+        collapseLink.show();
+        expandLink.hide();
+      });
+
+      collapseLink.click(() => {
+        $this.css("max-height","300px");
+        collapseLink.hide();
+        expandLink.show();
+      });
+
+      copyLink.click(() => {
+        navigator.clipboard.writeText(pre.text());
+        copyLink.text("Copied!");
+        window.setTimeout(() => copyLink.text("Copy to clipboard"), 3000);
+      });
+
+      const parent = $this.parent();
+      let l = null;
+
+      if (parent.hasClass("language-cs")) { l = "C#"; }
+      if (parent.hasClass("language-js")) { l = "Javascript"; }
+      if (parent.hasClass("language-ts")) { l = "TypeScript"; }
+      if (parent.hasClass("language-json")) { l = "JSON"; }
+
+      if (l) {
+        lang.show().find("span").text(l);
+      }
+
+    });
+  })
+</script>
+
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
     <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
@@ -30,6 +82,13 @@ layout: default
     </div></div>
 {% endcapture %}
 
+<div class="code-toolbar" id="codeToolbar" style="display: none;">
+  <span class="lang" style="display: none;"><span></span></span>
+  <a class="expand">Expand</a>
+  <a class="collapse" style="display: none;">Collapse</a>
+  <a class="copy">Copy to clipboard</a>
+</div>
+
 <article class="post">
   
   <a href="/">&lt;&lt; Back</a>
@@ -52,6 +111,7 @@ layout: default
       <span class="tag">{{tag}}</span>
     {% endfor %}
   </div>
+
   {% include post-about.html %}
 
   {% include disqus.html %}

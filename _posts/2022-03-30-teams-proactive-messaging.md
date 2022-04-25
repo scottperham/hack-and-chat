@@ -54,7 +54,6 @@ In this example, `_appSettings.MicrosoftAppId` (C#) and `process.env.MicrosoftAp
 
 Likewise , `_appSettings.MicrosoftAppPassword` (C#) and `process.env.MicrosoftAppPassword` (TypeScript) refer to a secret that has been created against your app registration.
 
-_C#_
 ```cs
 using Microsoft.Identity.Client;
 
@@ -75,7 +74,6 @@ private async Task<string> GetTokenForApp(string tenantId)
 }
 ```
 
-_TypeScript_
 ```ts
 import { ConfidentialClientApplication } from '@azure/msal-node';
 
@@ -107,7 +105,6 @@ If the app cannot be found, this is most likely because the user doesn't have it
 
 In this example, `_appSettings.TeamsAppId` (C#) and `process.env.TeamsAppId` (TypeScript) refer to the ID (GUID) inside the Teams app manifest.
 
-_C#_
 ```cs
 var installedApps = await graphClient.Users[upn].Teamwork.InstalledApps
     .Request()
@@ -127,7 +124,6 @@ else {
 }
 ```
 
-_TypeScript_
 ```ts
 const installedApps = await graphClient.api(`/users/${upnOrOid}/teamwork/installedapps`)
     .filter(`teamsApp/externalId eq '${process.env.TeamsAppId}'`)
@@ -148,7 +144,6 @@ else {
 
 Find our application in the app store or organisation store using [appCatalogs/teamsApps](https://docs.microsoft.com/en-us/graph/api/appcatalogs-list-teamsapps?view=graph-rest-1.0&tabs=http) and then install it with [users/{upn}/teamwork/installedApps](https://docs.microsoft.com/en-us/graph/api/userteamwork-post-installedapps?view=graph-rest-1.0&tabs=http)
 
-_C#_
 ```cs
 var teamsApps = await graphClient.AppCatalogs.TeamsApps
     .Request()
@@ -183,7 +178,6 @@ if (teamApp != null)
 }
 ```
 
-_TypeScript_
 ```ts
 const teamsApps = await graphClient.api("/appCatalogs/teamsApps")
     .filter(`externalId eq '${process.env.TeamsAppId}'`)
@@ -211,7 +205,6 @@ if (teamsApps.value.length > 0 && teamsApps.value[0].id) {
 
 To get the internal user reference (also known as a ChannelAccount) we call the [chat graph endpoint for the installed app](https://docs.microsoft.com/en-us/graph/api/userscopeteamsappinstallation-get-chat?view=graph-rest-1.0&tabs=http)
 
-_C#_
 ```cs
 var chat = await graphClient.Users[upn].Teamwork.InstalledApps[installationId].Chat
     .Request()
@@ -228,7 +221,6 @@ var internalUserObject = members[0];
 
 In the case of TypeScript / Javascript, there isn't a built-in ConnectorClient class in the framework, but we can create our own! [Here is one I created](https://github.com/scottperham/hr-talent-node/blob/master/src/services/data/botService.ts) that exposes the [v3/conversation/members bot framework api endpoint](https://docs.microsoft.com/en-us/azure/bot-service/rest-api/bot-framework-rest-connector-api-reference?view=azure-bot-service-4.0#get-conversation-members).
 
-_TypeScript_
 ```ts
 const chat = await graphClient
     .api(`/users/${upnOrOid}/teamwork/installedApps/${installationId}/chat`)
@@ -249,7 +241,6 @@ This has a side effect of calling your bot with a ConversationUpdate activity as
 
 Although we weren't able to craft or request the internal user id, we can programmatically create the bot id! This is in the following format "28:{_Your AAD client ID_}"
 
-_C#_
 ```cs
 var conversationParameters = new ConversationParameters
 {
@@ -263,7 +254,6 @@ var conversationParameters = new ConversationParameters
 };
 ```
 
-_TypeScript_
 ```ts
 const conversationParameters: Partial<ConversationParameters> = {
     isGroup: false,
@@ -282,7 +272,6 @@ Finally, we can weave our way around the confusing set of nested callbacks to cr
 
 We have a new configuration value here, `_appSettings.ServiceUrl` (C#) and `process.env.ServiceUrl` (TypeScript). This is basically the base url for bot service and will be https://smba.trafficmanager.net/{your region} - now, {your region} can be a few possible values... I typically fallback to "uk" but you might want to consider overriding this with the service url that appears in any activity that is sent to your bot as this will ensure that you have the correct region. (Having said that, my tests seem to confirm that as long as it's a valid region value, the messages will still be routed!)
 
-_C#_
 ```cs
 await ((CloudAdapter)_adapter).CreateConversationAsync(credentials.MicrosoftAppId, null, _appSettings.ServiceUrl, credentials.OAuthScope, conversationParameters, async (t1, c1) =>
 {
@@ -294,7 +283,6 @@ await ((CloudAdapter)_adapter).CreateConversationAsync(credentials.MicrosoftAppI
 }, cancellationToken);
 ```
 
-_TypeScript_
 ```ts
 await this.adapter.createConversationAsync(process.env.MicrosoftAppId!, "", process.env.ServiceUrl!, "https://api.botframework.com", <ConversationParameters>conversationParameters, async (t1) => {
     const conversationReference: ConversationReference = {
