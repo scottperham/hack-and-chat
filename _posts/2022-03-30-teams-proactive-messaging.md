@@ -1,13 +1,16 @@
 ---
 layout: post
 title:  Proactive messaging in Teams
-excerpt: With more and more of us are spending our days working in Microsoft Teams, we're seeing loads more high quality apps being published to the store... the most common feature we see of these apps is the ability to send a notification to a user.
+tags: [Microsoft Teams, C#, TypeScript]
+excerpt_separator: <!--more-->
 author: scott
 ---
 
 Sending a proactive notifiction seems more complicated than it really is.
 
 More and more of us are spending our days working in Microsoft Teams and with the [announcement that it's now reached a whopping 270 million monthly active users](https://twitter.com/fxshaw/status/1486107743320612867), we're seeing loads more high quality apps being published to the store... the most common feature we see of these apps is the ability to send a notification to a user.
+
+<!--more-->
 
 There are a [fair few samples](https://github.com/microsoft/BotBuilder-Samples/tree/main/samples/csharp_dotnetcore/16.proactive-messages) out there that demonstrate how proactive messaging works but I still find that even though it's arguable the first feature people think of when they talk about integrating with Teams, it seems to be one of the main things people struggle to implement.
 
@@ -238,7 +241,9 @@ const members = await connectorClient
 var internalUserObject = members[0];
 ```
 
->**Note:** This has a side effect of calling your bot with a ConversationUpdate activity as if new members have been added to the chat.
+:WARNINGSTART:
+This has a side effect of calling your bot with a ConversationUpdate activity as if new members have been added to the chat. Bear this in mind if you have logic for when a new member is added!
+:WARNINGEND:
 
 ### 5. Create the conversation parameters
 
