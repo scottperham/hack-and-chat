@@ -136,6 +136,8 @@ private IImageProcessingContext ApplyRoundedCorners(IImageProcessingContext ctx,
 }
 ```
 
+There is a fair bit of code here but most of it comes from one of [ImageSharp's samples on GitHub](https://github.com/SixLabors/Samples/tree/main/ImageSharp/AvatarWithRoundedCorner).
+
 Let's navigate to the endpoint and see the fruits of our labour...
 
 ```
@@ -146,7 +148,7 @@ You should see something similar to the below:
 
 ![Badge](/assets/adaptive-card-custom-ui/browser-no-args.png)
 
-This is cool... but we can make it a bit better by using some parameters to control how the badge is rendered:
+This is cool... but we can make it a bit better by using some parameters to control how the badge is rendered.
 
 Let's add a new type to hold that request data (from the querystring)
 
@@ -206,6 +208,11 @@ Build up a URI that represents the badge you'd like to create and navigate to th
 ```
 "<BASE URI>/images/badge?text=Microsoft+Teams&textheight=10&paddingy=5&cornerradius=8&backgroundcolor=%23fc0&textcolor=%23333"
 ```
+
+:WARNINGSTART:
+All the values need to be "uri encoded" so for a css-style colour value #ffcc00 for example you'll need to encode the "#", this would become %23ffcc00 - this is also true for spaces, but you can just use "+" for that.
+:WARNINGEND:
+
 
 ![Badge Image](/assets/adaptive-card-custom-ui/browser.png)
 
