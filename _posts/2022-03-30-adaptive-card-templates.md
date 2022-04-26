@@ -14,7 +14,7 @@ How about making them even cooler with some fancy runtime data binding?
 
 When you need to build data-driven cards there are a couple of options open to you. The first is to simply define the JSON for the final card dynamically. 
 
-Although this is made slightly easier with the Adaptive Card SDKs that are available for [.NET](https://docs.microsoft.com/en-us/adaptive-cards/sdk/authoring-cards/net) and [JavaScript](https://docs.microsoft.com/en-us/adaptive-cards/sdk/authoring-cards/javascript), the downside to this approach is that it tends to require a lot of declaritive code and it's not that easy to take a beautifully designed card from the [Adaptive Card designer](https://adaptivecards.io/designer/) and re-create that with the available object models.
+Although this is made slightly easier with the Adaptive Card SDKs that are available for [.NET](https://docs.microsoft.com/en-us/adaptive-cards/sdk/authoring-cards/net) and [JavaScript](https://docs.microsoft.com/en-us/adaptive-cards/sdk/authoring-cards/javascript), the downside to this approach is that it tends to require a lot of declarative code and it's not that easy to take a beautifully designed card from the [Adaptive Card designer](https://adaptivecards.io/designer/) and re-create that with the available object models.
 
 The second way of handling this (and in my opinion, the better way!) is to use **_templating_**.
 
@@ -126,7 +126,7 @@ const payload = template.expand({
 });
 ```
 
-Whichever way you do it, the value of `paylod` is the fully expanded adaptive card json (if you are using TypeScript, this will be of type `any`)
+Whichever way you do it, the value of `payload` is the fully expanded adaptive card json (if you are using TypeScript, this will be of type `any`)
 
 Now, depending on what you actually want to do with your expanded adaptive card, you might need to process it further - perhaps convert it back to a string:
 
@@ -194,6 +194,6 @@ Whichever language you use and whichever approach you decide to take, you've qui
 
 ## But wait, there's more!
 
-You can do so much (_SO MUCH!_) with the [expression language behind adaptive card templates](https://docs.microsoft.com/en-us/adaptive-cards/templating/language#:~:text=Adaptive%20Card%20Templating%20is%20built%20on%20top%20of,just%20a%20small%20sampling%20of%20the%20built-in%20functions.)... definitely worthy of it's own post (spoiler). But to get you started, the [HR Talent App Sample for Teams](https://github.com/OfficeDev/msteams-sample-contoso-hr-talent-app-node) project makes extensive use of card templating - it even uses some of the other cool features like conditionals and itterative binding!
+You can do so much (_SO MUCH!_) with the [expression language behind adaptive card templates](https://docs.microsoft.com/en-us/adaptive-cards/templating/language#:~:text=Adaptive%20Card%20Templating%20is%20built%20on%20top%20of,just%20a%20small%20sampling%20of%20the%20built-in%20functions.)... definitely worthy of it's own post (spoiler). But to get you started, the [HR Talent App Sample for Teams](https://github.com/OfficeDev/msteams-sample-contoso-hr-talent-app-node) project makes extensive use of card templating - it even uses some of the other cool features like conditionals and iterative binding!
 
 Happy coding!

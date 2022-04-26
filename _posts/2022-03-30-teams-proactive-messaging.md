@@ -6,7 +6,7 @@ excerpt_separator: <!--more-->
 author: scott
 ---
 
-Sending a proactive notifiction seems more complicated than it really is.
+Sending a proactive notification seems more complicated than it really is.
 
 More and more of us are spending our days working in Microsoft Teams and with the [announcement that it's now reached a whopping 270 million monthly active users](https://twitter.com/fxshaw/status/1486107743320612867), we're seeing loads more high quality apps being published to the store... the most common feature we see of these apps is the ability to send a notification to a user.
 
@@ -26,7 +26,7 @@ This really only leaves us with 2 options...
 
 ### **Option 1**: Cache the conversation reference when a user is added to the conversation
 
-[This is how the samples do it](https://github.com/microsoft/BotBuilder-Samples/tree/main/samples/csharp_dotnetcore/16.proactive-messages) and it works great... if you can guarantee perstistant storage of these references. If you can't justify the operational overhead, you lose them for any reason or proactive messaging is added _after_ a chat feature already exists in your app, you're sort of stuck.
+[This is how the samples do it](https://github.com/microsoft/BotBuilder-Samples/tree/main/samples/csharp_dotnetcore/16.proactive-messages) and it works great... if you can guarantee persistent storage of these references. If you can't justify the operational overhead, you lose them for any reason or proactive messaging is added _after_ a chat feature already exists in your app, you're sort of stuck.
 
 >Wouldn't it be better though if you could programmatically get this conversation reference on demand? 
 

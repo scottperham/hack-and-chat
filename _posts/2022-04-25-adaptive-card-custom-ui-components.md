@@ -30,7 +30,7 @@ Ok, I know this is a pretty trivial example, but it demonstrates the ability to 
 
 And here's how it's done...
 
-The process is really quite simple, you host an endpoint that essentially pretends to support a GET request for a static image but actually dynamically generates the image on each request - this bit is the easist part, we just change the `Content-Type` response header to some image mime type, in this case `image/png`:
+The process is really quite simple, you host an endpoint that essentially pretends to support a GET request for a static image but actually dynamically generates the image on each request - this bit is the easiest part, we just change the `Content-Type` response header to some image mime type, in this case `image/png`:
 
 ```cs
 [Route("/images/badge")]
@@ -85,7 +85,7 @@ public async Task<IActionResult> GetBadge()
 
     Response.ContentType = "image/png";
 
-    // Here we save the image to the reponse stream
+    // Here we save the image to the response stream
     await img.SaveAsPngAsync(Response.Body);
 
     return Ok();

@@ -18,7 +18,7 @@ Here is a question I hear frequently from partners who are just about to start w
 
 >Why would I want to use Azure SSO for my app, when I already have my own authentication in place?
 
-It's a fair question, but keep in mind that *all* users of Teams sign into the Teams client using Azure AD. Because of this it makes sense to make accessing your application, from inside Teams, as seemless as possible (meet users where they are!). By implementing Teams SSO, it is possible to make it so that when a user opens your app in Teams, they are automatically provided with access to everything they expect. With the latest Teams SSO function in the Teams SDK, you can also make this work across devices, so you get SSO across the desktop Teams app, web Teams app and mobile Teams app!
+It's a fair question, but keep in mind that *all* users of Teams sign into the Teams client using Azure AD. Because of this it makes sense to make accessing your application, from inside Teams, as seamless as possible (meet users where they are!). By implementing Teams SSO, it is possible to make it so that when a user opens your app in Teams, they are automatically provided with access to everything they expect. With the latest Teams SSO function in the Teams SDK, you can also make this work across devices, so you get SSO across the desktop Teams app, web Teams app and mobile Teams app!
 
 This then removes a barrier to adoption, which should then result in increased usage/adoption of your Teams app. For most partners, usage is an important calculation that is considered when determining the ROI of their Teams app, and is often used to justify further time and money to spend on improving their initial Teams app release.
 
